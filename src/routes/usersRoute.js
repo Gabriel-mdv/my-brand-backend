@@ -1,6 +1,6 @@
 import express from "express"
 import userscontroller from "../controllers/usersController.js"
-import verififyIsOwner from "../middlewares/verifyIsOwner.js"
+// import verififyIsOwner from "../middlewares/verifyIsOwner.js"
 
 const router = express.Router()
 

@@ -4,10 +4,7 @@ import bodyParser from "body-parser"
 import mongoose from "mongoose"
 import dotenv from "dotenv"
 import morgan from "morgan"
-import session from "express-session"
-import mongodbSession from "connect-mongodb-session" 
 import allRoutes from "./routes/allRoutes.js"
-import Article from "../../demonstrate coockies/models/Article.js"
 
 
 
@@ -46,12 +43,6 @@ app.get("/", (req,res) => {
 app.use("/api/v1", allRoutes)
 
 
-// ___ start our session _____ 
-app.use(session({
-    secret: "this is my secret",
-    resave: false,
-    saveUninitialized: false,
-}))
 
 // ___ start our all routes ____ 
 
