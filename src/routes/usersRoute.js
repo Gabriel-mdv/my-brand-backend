@@ -6,7 +6,6 @@ const router = express.Router()
 
 router.post("/signup", userscontroller.signup)
 router.post("/login", userscontroller.login)
-router.get("/",verififyIsOwner, userscontroller.viewUsers)
-
+router.get("/", userscontroller.viewUsers)
 
 export default router

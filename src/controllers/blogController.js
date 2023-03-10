@@ -6,17 +6,29 @@ class blogController {
             const {title, description, content, category, image_url} = req.body
             const createdBlog = await Blog.create({title, description, content, category, image_url})
 
+
             return res.status(201).json({
                 message: "Blog Created successfully",
+                ok: true,
                 data: createdBlog
             })
 
         }
         catch(error){
             console.log(error)
+            
+
+            if (error.code === 11000){
+                return res.status(500).json({
+                    message: "😮😮Blog Already Exists. Please Use a New title!",
+
+                })
+            }
+            console.log("erroor happened")
+
             return res.status(500).json({
                 message: error.message,
-                code: error.code,             
+                code: error.code,            
             })
         }
     }
@@ -34,6 +46,8 @@ class blogController {
         }
         catch(error){
             console.log(error)
+
+            
             return res.status(500).json({
                 message: error.message,
                 code: error.code,             

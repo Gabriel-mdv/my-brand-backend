@@ -3,18 +3,27 @@ import cors from "cors"
 import bodyParser from "body-parser"
 import mongoose from "mongoose"
 import dotenv from "dotenv"
+import morgan from "morgan"
 import session from "express-session"
 import mongodbSession from "connect-mongodb-session" 
 import allRoutes from "./routes/allRoutes.js"
+import Article from "../../demonstrate coockies/models/Article.js"
+
 
 
 // ___ initialize our app ___ 
 const app = express()
 
+
+if(process.env.NODE_ENV === "development") app.use(morgan())
+// ____ set the view engine ___ 
+app.set('view engine', 'ejs')
+
+app.use(express.urlencoded({extended: false}))
+
+
 // ___ configure dotenv __  
-
 dotenv.config()
-
 
 // __ use cors and bodyParser ___ 
 app.use(cors())
@@ -24,15 +33,13 @@ app.use(bodyParser.json())
 
 // host and port
 const host = process.env.HOST 
-const port  = process.env.PORT
+const port  = process.env.PORT 
 
 
 // ____ routes ___ 
 
 app.get("/", (req,res) => {
-    req.session.isAuth = true;
-    console.log(req.session.id)
-    res.status(200).send("<h1>You are good to go Gabriel<h1/>")
+    res.render('blogs/allBlogs')
 })
 
 
