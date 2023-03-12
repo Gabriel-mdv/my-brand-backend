@@ -39,7 +39,7 @@ const port  = process.env.PORT
 
 // ____ routes ___ 
 
-app.get("/", (req,res) => {
+app.get("/api/v1/home", (req,res) => {
     res.render('blogs/allBlogs')
 })
 
