@@ -37,7 +37,7 @@ class userController{
     // ___ VIEW USERS___  
     static async viewUsers (req, res){
         try{
-            const allUsers =await User.find()
+            const allUsers =await User.find().maxTimeMS(50000)
             
             return res.status(302).json({
                 message: "All Users successfully found",
