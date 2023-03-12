@@ -1,5 +1,7 @@
 import mongoose from "mongoose";
 
+// cloudinary     
+
 const blogSchema = new mongoose.Schema({
     title:{
         type: String,
