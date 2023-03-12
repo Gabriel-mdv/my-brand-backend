@@ -7,7 +7,14 @@ import jwt from "jsonwebtoken"
 class userController{
     static async signup(req, res) {
         try{
-            const {username, email, password, isOwner} = req.body
+            const {username, email, password} = req.body
+            const isOwner = false
+
+            const thereAreUsers = await User.find()
+        
+            if(!thereAreUsers){
+                isOwner = true;
+            }
 
             const hashedPassword = await bcrypt.hash(password, 10)
             const createdUser = await User.create({username, email, password: hashedPassword, isOwner})
