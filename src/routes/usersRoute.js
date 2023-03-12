@@ -1,13 +1,13 @@
 import express from "express"
 
 
-import userscontroller from "../controllers/usersController.js"
-import verififyIsOwner from "../middlewares/verifyIsOwner.js"
+import usersController from "../controllers/usersController.js"
+// import verififyIsOwner from "../middlewares/verifyIsOwner.js"
 
 const router = express.Router()
 
-router.post("/signup", userscontroller.signup)
-router.post("/login", userscontroller.login)
-router.get("/", userscontroller.viewUsers)
+router.post("/signup", usersController.signup)
+router.post("/login", usersController.login)
+router.get("/", usersController.viewUsers)
 
 export default router

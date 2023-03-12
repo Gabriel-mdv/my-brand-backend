@@ -3,7 +3,7 @@ import bcrypt from "bcrypt"
 import jwt from "jsonwebtoken"
 
 
-class userscontroller{
+class usersController{
     static async signup(req, res) {
         try{
             const {username, email, password, isOwner} = req.body
@@ -99,4 +99,4 @@ class userscontroller{
 }
 
 
-export default userscontroller
+export default usersController
