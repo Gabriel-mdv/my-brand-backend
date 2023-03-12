@@ -1,6 +1,5 @@
 import express from "express"
 
-
 import usersController from "../controllers/usersController.js"
 // import verififyIsOwner from "../middlewares/verifyIsOwner.js"
 

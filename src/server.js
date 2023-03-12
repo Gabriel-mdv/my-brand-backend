@@ -5,6 +5,10 @@ import mongoose from "mongoose"
 import dotenv from "dotenv"
 import morgan from "morgan"
 import allRoutes from "./routes/allRoutes.js"
+import bcrypt from "bcrypt"
+import jwt from "jsonwebtoken"
+
+
 
 
 
