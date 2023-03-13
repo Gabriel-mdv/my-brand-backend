@@ -5,15 +5,15 @@ import mongoose from "mongoose";
 const blogSchema = new mongoose.Schema({
     title:{
         type: String,
-        // required: true,
-        // unique: true,
-        // validate: {
-        //     validator: (value) => {
-        //         return value && value.length > 0
-        //     },
-        //     // to show this message in result 
-        //     message: "title should not be empty"
-        // }
+        required: true,
+        unique: true,
+        validate: {
+            validator: (value) => {
+                return value && value.length > 0
+            },
+            // to show this message in result 
+            message: "title should not be empty"
+        }
     },
     description: {
         type: String,
