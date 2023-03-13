@@ -1,11 +1,29 @@
 import Blog from "../modules/Blog.js"
 
-class blogController {
-    static async createBlog(req, res) {
-        try{
-            const {title, description, content, category, image_url} = req.body
-            const createdBlog = await Blog.create({title, description, content, category, image_url})
 
+
+// const storage =  multer.diskStorage({
+//     destination: (req, file, cb) => {
+//         cb(null, '../assets')
+//     },
+//     filename: (req, file, cb) => {
+//         console.log(file)
+//         cb(null, Date.now() + path.extname(file.originalname))
+//     }
+// })
+
+
+class blogController {
+    static async createBlog (req, res) {
+        try{
+            console.log('wer her')
+            const {title, description, content, category, image_url} = req.body
+            // ___________ dealing with the image ___________ 
+            
+            // console.log(req.file)
+            // const image = req.file
+            const createdBlog = Blog.create({title, description, content, category, image_url})
+            
 
             return res.status(201).json({
                 message: "Blog Created successfully",
@@ -61,6 +79,12 @@ class blogController {
             const {id} = req.params
             const single = await Blog.findById({_id: id})
 
+            if(! single){
+                return res.status(302).json({
+                    message: "Blog was not found. Sorry",
+                })
+            }
+
             return res.status(302).json({
                 message: "Read Your blog. It is shown below",
                 data: single
@@ -79,19 +103,22 @@ class blogController {
 
     // ___ UPDATE BLOG ____ 
     static async updateBlog(req, res){
-        try{
-            const {id} = req.params
-            const {description, content} = req.body
 
-            const updatedBlog = await Blog.findByIdAndUpdate({_id: id}, {description, content}, {new: true})
+        try{
+         
+            const {id} = req.params
+            const {description, content, image_url, title} = req.body
+
+            const updatedBlog = await Blog.findByIdAndUpdate({_id: id}, {description, content, image_url, title}, {new: true})
 
             if(! updatedBlog){
                 return res.status(404).json({
-                    message: `Blog with id: ${id} is not found`
+                    message: `Blog with id: ${id} is not found. Sorry`
                 })
             }
             
             return res.status(302).json({
+                ok: true,
                 message: "Blog successfully updated",
                 data: updatedBlog
             })

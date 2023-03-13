@@ -28,8 +28,14 @@ dotenv.config()
 
 // __ use cors and bodyParser ___ 
 app.use(cors())
-app.use(bodyParser.json())
+app.use(bodyParser.json({limit: '50mb', type: 'application/json'}))
 
+app.get('/upload', (req, res) => {
+    res.render('/blogs/uploading')
+})
+app.post('/upload', (res, req) => {
+    res.send("image uploaded")
+})
 
 
 // host and port
