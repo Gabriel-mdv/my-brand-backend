@@ -2,8 +2,8 @@ import express from "express"
 import blogController from "../controllers/blogController.js"
 import verififyIsOwner from "../middlewares/verifyIsOwner.js"
 const router = express.Router()
-import multer from 'multer'
-import path from 'path'
+// import multer from 'multer'
+// import path from 'path'
 
 // const storage = multer.diskStorage({
 // 	destination: (req, file, callback) => {
@@ -18,7 +18,7 @@ import path from 'path'
 
 
 // const upload = multer({storage: storage});
-const upload = multer({dest: '../assets'})
+// const upload = multer({dest: '../assets'})
 
 
 // router.post("/",upload.single('url_image'),  (req, res) => {
