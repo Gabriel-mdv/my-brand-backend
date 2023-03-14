@@ -1,4 +1,4 @@
-// import Message from '../modules/Message.js'
+import Message from '../modules/Message.js'
 
 
 class messageController  {

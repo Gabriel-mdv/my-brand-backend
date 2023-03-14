@@ -27,7 +27,7 @@ app.use(express.urlencoded({extended: false}))
 dotenv.config()
 
 // __ use cors and bodyParser ___ 
-app.use(cors())
+app.use(cors({origin: '*'}))
 app.use(bodyParser.json({limit: '50mb', type: 'application/json'}))
 
 app.get('/upload', (req, res) => {
